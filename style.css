@@ -1,0 +1,60 @@
+/* style.css */
+:root {
+  --primary-color: #6d28d9;
+  --primary-light: #ede9fe;
+  --background: #f8f9fa;
+  --card-bg: #ffffff;
+  --accent: #fef3c7;
+  --border-color: #e2e8f0;
+  --text-color: #1f2937;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background);
+  color: var(--text-color);
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+}
+
+form > * {
+  margin-bottom: 18px;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  

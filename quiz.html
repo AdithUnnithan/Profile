@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusConnect Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1>Take the Quiz 💘</h1>
+    <form id="quiz-form">
+      <!-- Quiz will be rendered here -->
+    </form>
+    <button type="submit" form="quiz-form">Find My Matches</button>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        id: "q1",
+        text: "Favorite spot to spend time together?",
+        options: [
+          "Lovers park",
+          "Library",
+          "Benchs near the mahabharath painting",
+          "Back canteen",
+          "2nd floor of campus cafe"
+        ]
+      },
+      {
+        id: "q2",
+        text: "What is your love language?",
+        options: [
+          "Physical touch",
+          "Words of affirmation",
+          "Quality time",
+          "Receiving gifts",
+          "Acts of service"
+        ]
+      },
+      {
+        id: "q3",
+        text: "What do you usually look for in someone you're dating?",
+        options: ["Personality", "Physical attraction", "Colour", "Vibe"]
+      },
+      {
+        id: "q4",
+        text: "What type of relationship are you looking for?",
+        options: ["Casual dating", "Long term relationship", "Just to meet new ppl", "Situationship"]
+      },
+      {
+        id: "q5",
+        text: "Which one of these is your dating alter ego?",
+        options: ["Possessive", "Toxic", "Clingy", "Unpredictable"]
+      }
+    ];
+
+    function buildQuizForm() {
+      const form = document.getElementById("quiz-form");
+
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "quiz-question";
+        div.innerHTML = `<p><strong>${index + 1}. ${q.text}</strong></p>`;
+        q.options.forEach(option => {
+          const id = `${q.id}-${option}`;
+          div.innerHTML += `
+            <label class="quiz-option">
+              <input type="radio" name="${q.id}" value="${option}" required />
+              ${option}
+            </label>
+          `;
+        });
+        form.appendChild(div);
+      });
+    }
+
+    function handleQuizSubmit(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const answers = [];
+
+      for (const question of questions) {
+        const answer = formData.get(question.id);
+        if (!answer) {
+          alert("Please answer all questions.");
+          return;
+        }
+        answers.push(answer);
+      }
+
+      localStorage.setItem("campusConnectQuiz", JSON.stringify({ answers }));
+      window.location.href = "matches.html";
+    }
+
+    buildQuizForm();
+    document.getElementById("quiz-form").addEventListener("submit", handleQuizSubmit
+
