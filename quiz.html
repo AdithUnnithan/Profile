@@ -3,98 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CampusConnect Quiz</title>
+  <title>The Quiz</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
-    <h1>Take the Quiz 💘</h1>
-    <form id="quiz-form">
-      <!-- Quiz will be rendered here -->
-    </form>
-    <button type="submit" form="quiz-form">Find My Matches</button>
+    <div class="card">
+      <h2>The Quiz</h2>
+      <p>Answer these five questions to help us find your best matches.</p>
+      <form action="results.html">
+        <div class="question">
+          <p>1. Favorite spot to spend time together?</p>
+          <label><input type="radio" name="q1" required> Lovers park</label>
+          <label><input type="radio" name="q1"> Library</label>
+          <label><input type="radio" name="q1"> Benches near the mahabharath painting</label>
+          <label><input type="radio" name="q1"> Back canteen</label>
+          <label><input type="radio" name="q1"> 2nd floor of campus cafe</label>
+        </div>
+        <div class="question">
+          <p>2. What is your love language?</p>
+          <label><input type="radio" name="q2" required> Quality time</label>
+          <label><input type="radio" name="q2"> Acts of service</label>
+          <label><input type="radio" name="q2"> Words of affirmation</label>
+          <label><input type="radio" name="q2"> Physical touch</label>
+          <label><input type="radio" name="q2"> Gifts</label>
+        </div>
+        <div class="question">
+          <p>3. Dream date activity?</p>
+          <label><input type="radio" name="q3" required> Walk around campus</label>
+          <label><input type="radio" name="q3"> Night canteen run</label>
+          <label><input type="radio" name="q3"> Stargazing on hostel terrace</label>
+          <label><input type="radio" name="q3"> Movie night in class room</label>
+          <label><input type="radio" name="q3"> Group hangout turned date</label>
+        </div>
+        <div class="question">
+          <p>4. Ideal communication style?</p>
+          <label><input type="radio" name="q4" required> Constant texting</label>
+          <label><input type="radio" name="q4"> Short but deep conversations</label>
+          <label><input type="radio" name="q4"> Instagram memes</label>
+          <label><input type="radio" name="q4"> Surprise visits</label>
+          <label><input type="radio" name="q4"> Studying together</label>
+        </div>
+        <div class="question">
+          <p>5. Biggest turn-on in campus crush?</p>
+          <label><input type="radio" name="q5" required> Confidence</label>
+          <label><input type="radio" name="q5"> Humor</label>
+          <label><input type="radio" name="q5"> Intelligence</label>
+          <label><input type="radio" name="q5"> Fashion sense</label>
+          <label><input type="radio" name="q5"> Kindness</label>
+        </div>
+        <button type="submit">See Results</button>
+      </form>
+    </div>
   </div>
-
-  <script>
-    const questions = [
-      {
-        id: "q1",
-        text: "Favorite spot to spend time together?",
-        options: [
-          "Lovers park",
-          "Library",
-          "Benchs near the mahabharath painting",
-          "Back canteen",
-          "2nd floor of campus cafe"
-        ]
-      },
-      {
-        id: "q2",
-        text: "What is your love language?",
-        options: [
-          "Physical touch",
-          "Words of affirmation",
-          "Quality time",
-          "Receiving gifts",
-          "Acts of service"
-        ]
-      },
-      {
-        id: "q3",
-        text: "What do you usually look for in someone you're dating?",
-        options: ["Personality", "Physical attraction", "Colour", "Vibe"]
-      },
-      {
-        id: "q4",
-        text: "What type of relationship are you looking for?",
-        options: ["Casual dating", "Long term relationship", "Just to meet new ppl", "Situationship"]
-      },
-      {
-        id: "q5",
-        text: "Which one of these is your dating alter ego?",
-        options: ["Possessive", "Toxic", "Clingy", "Unpredictable"]
-      }
-    ];
-
-    function buildQuizForm() {
-      const form = document.getElementById("quiz-form");
-
-      questions.forEach((q, index) => {
-        const div = document.createElement("div");
-        div.className = "quiz-question";
-        div.innerHTML = `<p><strong>${index + 1}. ${q.text}</strong></p>`;
-        q.options.forEach(option => {
-          const id = `${q.id}-${option}`;
-          div.innerHTML += `
-            <label class="quiz-option">
-              <input type="radio" name="${q.id}" value="${option}" required />
-              ${option}
-            </label>
-          `;
-        });
-        form.appendChild(div);
-      });
-    }
-
-    function handleQuizSubmit(event) {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-      const answers = [];
-
-      for (const question of questions) {
-        const answer = formData.get(question.id);
-        if (!answer) {
-          alert("Please answer all questions.");
-          return;
-        }
-        answers.push(answer);
-      }
-
-      localStorage.setItem("campusConnectQuiz", JSON.stringify({ answers }));
-      window.location.href = "matches.html";
-    }
-
-    buildQuizForm();
-    document.getElementById("quiz-form").addEventListener("submit", handleQuizSubmit
-
+</body>
+</html>
