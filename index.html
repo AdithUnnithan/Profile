@@ -1,33 +1,50 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Campus Connect - Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusConnect</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>CampusConnect</h1>
-    <form id="profileForm">
-      <input type="text" id="name" placeholder="Full Name" required />
-      <input type="text" id="instagramId" placeholder="Instagram ID" required />
-      <select id="gender" required>
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-      <select id="preference" required>
-        <option value="">Looking For</option>
-        <option value="male">Men</option>
-        <option value="female">Women</option>
-        <option value="any">Anyone</option>
-      </select>
-      <button type="submit">Start Quiz</button>
-    </form>
+    <div class="card">
+      <div class="icon">🤍</div>
+      <h1>CampusConnect</h1>
+      <p>Tell us who you are and find your campus crush.</p>
+      <form action="quiz.html" onsubmit="saveProfile();">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="John Doe" required />
+        <label>Instagram ID</label>
+        <input type="text" id="insta" placeholder="@john.doe" required />
+        <label>Your Gender</label>
+        <div class="options">
+          <label><input type="radio" name="gender" value="Male" required /> Male</label>
+          <label><input type="radio" name="gender" value="Female" /> Female</label>
+        </div>
+        <label>I'm interested in...</label>
+        <div class="options">
+          <label><input type="radio" name="interest" value="Men" required /> Men</label>
+          <label><input type="radio" name="interest" value="Women" /> Women</label>
+          <label><input type="radio" name="interest" value="Anyone" /> Anyone</label>
+        </div>
+        <button type="submit">Create Profile & Start Quiz</button>
+      </form>
+    </div>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    function saveProfile() {
+      const name = document.getElementById('name').value;
+      const insta = document.getElementById('insta').value;
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const interest = document.querySelector('input[name="interest"]:checked').value;
+
+      localStorage.setItem("name", name);
+      localStorage.setItem("insta", insta);
+      localStorage.setItem("gender", gender);
+      localStorage.setItem("interest", interest);
+    }
+  </script>
 </body>
 </html>
